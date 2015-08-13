@@ -1,0 +1,1 @@
+wsimport -keep -p com.tapi.cxf.client http://localhost:8080/helloWrold/webservice/helloWorld?wsdl -s h:\ta_workspace\helloworld\src\main\java\ 

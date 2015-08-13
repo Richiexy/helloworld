@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="IGreetingService" targetNamespace="http://facade.server.cxf.tapi.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://facade.server.cxf.tapi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://facade.server.cxf.tapi.com/" elementFormDefault="unqualified" targetNamespace="http://facade.server.cxf.tapi.com/" version="1.0">
+<xs:element name="sayJson" type="tns:sayJson"/>
+<xs:element name="sayJsonResponse" type="tns:sayJsonResponse"/>
+<xs:element name="sayXml" type="tns:sayXml"/>
+<xs:element name="sayXmlResponse" type="tns:sayXmlResponse"/>
+<xs:complexType name="sayJson">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sayJsonResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sayXml">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sayXmlResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="sayXmlResponse">
+    <wsdl:part name="parameters" element="tns:sayXmlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayJson">
+    <wsdl:part name="parameters" element="tns:sayJson">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayJsonResponse">
+    <wsdl:part name="parameters" element="tns:sayJsonResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayXml">
+    <wsdl:part name="parameters" element="tns:sayXml">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IGreeting">
+    <wsdl:operation name="sayJson">
+      <wsdl:input name="sayJson" message="tns:sayJson">
+    </wsdl:input>
+      <wsdl:output name="sayJsonResponse" message="tns:sayJsonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sayXml">
+      <wsdl:input name="sayXml" message="tns:sayXml">
+    </wsdl:input>
+      <wsdl:output name="sayXmlResponse" message="tns:sayXmlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IGreetingServiceSoapBinding" type="tns:IGreeting">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sayJson">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sayJson">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sayJsonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sayXml">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sayXml">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sayXmlResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IGreetingService">
+    <wsdl:port name="IGreetingPort" binding="tns:IGreetingServiceSoapBinding">
+      <soap:address location="http://localhost:9090/IGreetingPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

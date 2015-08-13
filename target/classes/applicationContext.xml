@@ -1,0 +1,25 @@
+<beans  xmlns = "http://www.springframework.org/schema/beans" 
+		xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:jaxws="http://cxf.apache.org/jaxws" 
+		xsi:schemaLocation = "http://www.springframework.org/schema/beans   
+		     	http://www.springframework.org/schema/beans/spring-beans.xsd 
+				http://cxf.apache.org/jaxws     
+				http://cxf.apache.org/schemas/jaxws.xsd "> 
+
+	<!-- 还需要引入以下3 个关于 CXF 的资源文件，这三个文件在 cxf.jar中  --> 
+	<import  resource = "classpath:META-INF/cxf/cxf.xml"  /> 
+	<import  resource = "classpath:META-INF/cxf/cxf-extension-soap.xml" /> 
+	<import  resource = "classpath:META-INF/cxf/cxf-servlet.xml"  /> 
+	
+	<!-- webservice  -->
+	<!-- address   为webservice 发布的地址   -->
+	<!-- implementorClass   为该webservice 实现的接口   -->
+	<jaxws:endpoint  id = "helloWorld"  address = "/helloWorld" 
+         implementorClass = "com.tapi.cxf.server.facade.IGreeting" > 
+         <jaxws:implementor > 
+             <bean class = "com.tapi.cxf.server.spring.GreetingServiceImpl" /> 
+         </jaxws:implementor> 
+  </jaxws:endpoint>
+  <!-- webservice -->
+  
+</beans> 
